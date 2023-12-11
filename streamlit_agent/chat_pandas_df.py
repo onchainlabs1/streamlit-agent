@@ -17,7 +17,7 @@ def save_temporary_csv(file_content):
         return f.name
 
 # Caminho para o arquivo CSV pré-carregado
-DEFAULT_CSV_PATH = "caminho/para/seu/arquivo.csv"
+DEFAULT_CSV_PATH = "streamlit_agent/synthetic-galeria.csv"
 
 # Configuração inicial do Streamlit
 st.set_page_config(page_title="LangChain: Chat with pandas DataFrame", page_icon="🦜")
