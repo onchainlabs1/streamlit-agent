@@ -17,21 +17,17 @@ def save_temporary_csv(file_content):
         return f.name
 
 # Caminho para o arquivo CSV pré-carregado
-DEFAULT_CSV_PATH = "streamlit_agent/synthetic-galeria.csv"
+DEFAULT_CSV_PATH = "caminho/para/seu/arquivo.csv"
 
 # Configuração inicial do Streamlit
-st.set_page_config(page_title="Chat With Data - Binder", page_icon="🦜")
-st.title("Chat With Data - Binder")
+st.set_page_config(page_title="LangChain: Chat with pandas DataFrame", page_icon="🦜")
+st.title("🦜 LangChain: Chat with pandas DataFrame")
 
 # Carregamento do arquivo
-uploaded_file = st.file_uploader("Upload a Data file", type="csv")
-
-# Carrega o arquivo pré-carregado se nenhum arquivo foi enviado pelo usuário
-if not uploaded_file:
-    uploaded_file_content = load_data(DEFAULT_CSV_PATH)
-    temp_path = save_temporary_csv(uploaded_file_content)
-else:
-    temp_path = save_temporary_csv(uploaded_file.getvalue())
+# uploaded_file = st.file_uploader("Upload a Data file", type="csv")
+# Usando o arquivo pré-carregado diretamente
+uploaded_file_content = load_data(DEFAULT_CSV_PATH)
+temp_path = save_temporary_csv(uploaded_file_content)
 
 # Inserir chave da API OpenAI
 openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
