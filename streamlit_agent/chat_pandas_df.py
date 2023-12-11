@@ -19,8 +19,8 @@ def save_temporary_csv(file_content):
 DEFAULT_CSV_PATH = "streamlit_agent/binder-data.csv"
 
 # Configuração inicial do Streamlit
-st.set_page_config(page_title="Chat With Data - Binder", page_icon="🦜")
-st.title("campaign Wizard - Binder")
+st.set_page_config(page_title="Campaign Wizard - Binder", page_icon="🦜")
+st.title("Campaign Wizard - Binder")
 
 # Carregando o arquivo CSV pré-carregado
 uploaded_file_content = load_data(DEFAULT_CSV_PATH)
