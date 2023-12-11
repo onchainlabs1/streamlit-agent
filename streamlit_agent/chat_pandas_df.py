@@ -20,8 +20,8 @@ def save_temporary_csv(file_content):
 DEFAULT_CSV_PATH = "streamlit_agent/synthetic-galeria.csv"
 
 # Configuração inicial do Streamlit
-st.set_page_config(page_title="LangChain: Chat with pandas DataFrame", page_icon="🦜")
-st.title("🦜 LangChain: Chat with pandas DataFrame")
+st.set_page_config(page_title="Chat With Data - Binder", page_icon="🦜")
+st.title("Chat With Data - Binder")
 
 # Carregamento do arquivo
 uploaded_file = st.file_uploader("Upload a Data file", type="csv")
