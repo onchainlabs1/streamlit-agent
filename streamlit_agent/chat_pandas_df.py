@@ -37,8 +37,8 @@ def load_data(uploaded_file):
         return None
 
 
-st.set_page_config(page_title="LangChain: Chat with pandas DataFrame", page_icon="🦜")
-st.title("🦜 LangChain: Chat with pandas DataFrame")
+st.set_page_config(page_title="Chat with Data", page_icon="🦜")
+st.title("Chat with Data")
 
 uploaded_file = st.file_uploader(
     "Upload a Data file",
