@@ -69,7 +69,8 @@ if prompt := st.chat_input(placeholder="What is this data about?"):
     if uploaded_file:
         temp_path = load_data(uploaded_file)
         if temp_path:
-            agent = create_csv_agent(OpenAI(temperature=0, api_key=openai_api_key), temp_path, verbose=True)
+            agent = create_csv_agent(OpenAI(temperature=0, model_kwargs={"api_key": openai_api_key}), temp_path, verbose=True)
+
 
             with st.chat_message("assistant"):
                 st_cb = StreamlitCallbackHandler(st.container(), expand_new_thoughts=False)
