@@ -16,11 +16,11 @@ def save_temporary_csv(file_content):
         return f.name
 
 # Caminho para o arquivo CSV pré-carregado
-DEFAULT_CSV_PATH = "streamlit_agent/synthetic-galeria.csv"
+DEFAULT_CSV_PATH = "streamlit_agent/binder-data.csv"
 
 # Configuração inicial do Streamlit
 st.set_page_config(page_title="Chat With Data - Binder", page_icon="🦜")
-st.title("Chat With Data - Binder")
+st.title("campaign Wizard - Binder")
 
 # Carregando o arquivo CSV pré-carregado
 uploaded_file_content = load_data(DEFAULT_CSV_PATH)
@@ -35,13 +35,13 @@ if not openai_api_key:
     st.stop()
 
 # Lógica de chat
-if "messages" not in st.session_state or st.sidebar.button("Clear conversation history"):
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+if "messages" not in st.session_state or st.sidebar.button("Limpar Histórico"):
+    st.session_state["messages"] = [{"role": "assistant", "content": "Como posso te ajudar?"}]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
-if prompt := st.chat_input(placeholder="What is this data about?"):
+if prompt := st.chat_input(placeholder="Me pergunte sobre campanhas de marketing"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
 
