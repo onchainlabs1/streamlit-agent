@@ -81,7 +81,7 @@ st.markdown("""
     }
     </style>
     <footer class="footer">
-        <img src='streamlit_agent/NEW-LOGO-2.png' alt='Logo On-Chain Labs'>
+        <img src='NEW-LOGO-2.png' alt='Logo On-Chain Labs'>
         <span>Powered by On-Chain Labs</span>
     </footer>
     """, unsafe_allow_html=True)
