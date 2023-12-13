@@ -15,12 +15,15 @@ def save_temporary_csv(file_content):
         f.write(file_content)
         return f.name
 
-# Caminho para o arquivo CSV pré-carregado
-DEFAULT_CSV_PATH = "streamlit_agent/binder-data.csv"
-
 # Configuração inicial do Streamlit
 st.set_page_config(page_title="Campaign Wizard - Binder", page_icon="🦜")
 st.title("Campaign Wizard - Binder")
+
+# Adicionando o link na barra lateral
+st.sidebar.markdown("[Chat with Viz](https://agent-viz-zor6g7kbzrzyzbe7der6k7.streamlit.app/)")
+
+# Caminho para o arquivo CSV pré-carregado
+DEFAULT_CSV_PATH = "streamlit_agent/binder-data.csv"
 
 # Carregando o arquivo CSV pré-carregado
 uploaded_file_content = load_data(DEFAULT_CSV_PATH)
@@ -52,3 +55,33 @@ if prompt := st.chat_input(placeholder="Me pergunte sobre campanhas de marketing
         response = agent.run(prompt)
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.write(response)
+
+# Rodapé com logo e texto
+st.markdown("""
+    <style>
+    .reportview-container .main footer {visibility: hidden;}
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: transparent;
+        color: white;
+        text-align: center;
+        padding: 10px;
+    }
+    .footer img {
+        vertical-align: middle;
+        height: 30px;  # Ajuste a altura conforme necessário
+        margin: 5px;
+    }
+    .footer span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    </style>
+    <footer class="footer">
+        <img src='streamlit_agent/NEW-LOGO-2.png' alt='Logo On-Chain Labs'>
+        <span>Powered by On-Chain Labs</span>
+    </footer>
+    """, unsafe_allow_html=True)
