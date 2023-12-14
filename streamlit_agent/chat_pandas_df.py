@@ -57,12 +57,11 @@ if prompt := st.chat_input(placeholder="Me pergunte sobre campanhas de marketing
         st.write(response)
 
 
-        # Inserir a logo e a frase no final da barra lateral usando Markdown e HTML
+# Inserir a frase no final da barra lateral usando Markdown e HTML
 st.sidebar.markdown(
     """
-    <div style="position: fixed; bottom: 0; width: auto; text-align: center;">
-        <img src="https://github.com/onchainlabs1/streamlit-agent/blob/main/streamlit_agent/NEW-LOGO-2.png" alt="Logo On-Chain Labs" style="max-height: 100px;">
-        <p style="margin:0;">Powered by On-Chain Labs</p>
+    <div style="position: fixed; bottom: 0; width: auto; text-align: center; color: #800080;">
+        <p>Powered by On-Chain Labs</p>
     </div>
     """,
     unsafe_allow_html=True
