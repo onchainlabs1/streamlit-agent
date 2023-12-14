@@ -58,17 +58,27 @@ if prompt := st.chat_input(placeholder="Me pergunte sobre campanhas de marketing
 
 
 
-# Inserir a frase no final da barra lateral usando Markdown e HTML
-st.sidebar.markdown(
-    """
-    <div style="display: flex; flex-direction: column; height: 100%;">
-        <div style="margin-top: auto; width: 100%; text-align: center; color: white; font-weight: bold;">
-            <p>Powered by On-Chain Labs</p>
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+# Adicionando uma frase no final da barra lateral com posição fixa
+st.sidebar.markdown("""
+    <style>
+        .sidebar .sidebar-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Empurra o conteúdo para cima e para baixo */
+            height: calc(100vh - 96px); /* Altura da viewport menos o header do Streamlit */
+        }
+        .sidebar-footer {
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            padding: 10px 0;
+        }
+    </style>
+    <footer class="sidebar-footer">
+        Powered by On-Chain Labs
+    </footer>
+""", unsafe_allow_html=True)
+
 
 # Rodapé com logo e texto
 st.markdown("""
