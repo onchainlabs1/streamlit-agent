@@ -23,7 +23,7 @@ st.title("Campaign Wizard MVP - Binder")
 st.sidebar.markdown("[Chat with Data Viz](https://agent-viz-zor6g7kbzrzyzbe7der6k7.streamlit.app/)")
 
 # Caminho para o arquivo CSV pré-carregado
-DEFAULT_CSV_PATH = "streamlit_agent/binder-data1.csv"
+DEFAULT_CSV_PATH = "streamlit_agent/binder-data2.csv"
 
 # Carregando o arquivo CSV pré-carregado
 uploaded_file_content = load_data(DEFAULT_CSV_PATH)
