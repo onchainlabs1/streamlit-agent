@@ -56,6 +56,18 @@ if prompt := st.chat_input(placeholder="Me pergunte sobre campanhas de marketing
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.write(response)
 
+
+        # Inserir a logo e a frase no final da barra lateral usando Markdown e HTML
+st.sidebar.markdown(
+    """
+    <div style="position: fixed; bottom: 0; width: auto; text-align: center;">
+        <img src="streamlit_agent/NEW-LOGO-2.png" alt="Logo On-Chain Labs" style="max-height: 100px;">
+        <p style="margin:0;">Powered by On-Chain Labs</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 # Rodapé com logo e texto
 st.markdown("""
     <style>
