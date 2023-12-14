@@ -23,7 +23,7 @@ st.title("Campaign Wizard MVP - Binder")
 st.sidebar.markdown("[Chat with Data Viz](https://agent-viz-zor6g7kbzrzyzbe7der6k7.streamlit.app/)")
 
 # Caminho para o arquivo CSV pré-carregado
-DEFAULT_CSV_PATH = "streamlit_agent/binder-data.csv"
+DEFAULT_CSV_PATH = "streamlit_agent/binder-data1.csv"
 
 # Carregando o arquivo CSV pré-carregado
 uploaded_file_content = load_data(DEFAULT_CSV_PATH)
@@ -61,8 +61,10 @@ if prompt := st.chat_input(placeholder="Me pergunte sobre campanhas de marketing
 # Inserir a frase no final da barra lateral usando Markdown e HTML
 st.sidebar.markdown(
     """
-    <div style="position: absolute; bottom: 10px; left: 0; width: 100%; text-align: center; color: white; font-weight: bold;">
-        <p>Powered by On-Chain Labs</p>
+    <div style="display: flex; flex-direction: column; height: 100%;">
+        <div style="margin-top: auto; width: 100%; text-align: center; color: white; font-weight: bold;">
+            <p>Powered by On-Chain Labs</p>
+        </div>
     </div>
     """,
     unsafe_allow_html=True
