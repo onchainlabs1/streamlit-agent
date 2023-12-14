@@ -16,7 +16,7 @@ def save_temporary_csv(file_content):
         return f.name
 
 # Configuração inicial do Streamlit
-st.set_page_config(page_title="Campaign Wizard - Binder", page_icon="🦜")
+st.set_page_config(page_title="Campaign Wizard MVP - Binder", page_icon="")
 st.title("Campaign Wizard - Binder")
 
 # Adicionando o link na barra lateral
