@@ -3,7 +3,6 @@ from langchain.agents import create_csv_agent
 from langchain.llms import OpenAI
 import tempfile
 import os
-import pandas as pd 
 
 # Função para carregar dados do arquivo CSV pré-carregado
 def load_data(file_path):
@@ -56,12 +55,6 @@ if prompt := st.chat_input(placeholder="Me pergunte sobre campanhas de marketing
         response = agent.run(prompt)
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.write(response)
-
-
-# Adicionando a visualização do CSV colapsável após a lógica de chat
-with st.expander("Ver dados do CSV", expanded=False):
-    df = pd.read_csv(temp_path)  # Usando o Pandas para ler o arquivo CSV temporário
-    st.dataframe(df)  # Exibindo os dados na tabela interativa do Streamlit
 
 
 
