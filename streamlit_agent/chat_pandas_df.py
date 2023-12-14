@@ -61,7 +61,7 @@ if prompt := st.chat_input(placeholder="Me pergunte sobre campanhas de marketing
 # Inserir a frase no final da barra lateral usando Markdown e HTML
 st.sidebar.markdown(
     """
-    <div style="position: fixed; bottom: 0; width: 100%; text-align: center; color: white; font-weight: bold;">
+    <div style="position: fixed; bottom: 0; left: 0; width: 100%; color: white; font-weight: bold;">
         <p>Powered by On-Chain Labs</p>
     </div>
     """,
