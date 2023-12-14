@@ -20,7 +20,7 @@ st.set_page_config(page_title="Campaign Wizard MVP - Binder", page_icon="")
 st.title("Campaign Wizard MVP - Binder")
 
 # Adicionando o link na barra lateral
-st.sidebar.markdown("[Chat with Viz](https://agent-viz-zor6g7kbzrzyzbe7der6k7.streamlit.app/)")
+st.sidebar.markdown("[Chat with Data Viz](https://agent-viz-zor6g7kbzrzyzbe7der6k7.streamlit.app/)")
 
 # Caminho para o arquivo CSV pré-carregado
 DEFAULT_CSV_PATH = "streamlit_agent/binder-data.csv"
