@@ -3,7 +3,7 @@ from langchain.agents import create_csv_agent
 from langchain.llms import OpenAI
 import tempfile
 import os
-import pandas as pd 
+import pandas as pd
 
 # Função para carregar dados do arquivo CSV pré-carregado
 def load_data(file_path):
@@ -40,30 +40,32 @@ if not openai_api_key:
 
 # Lógica de chat
 if "messages" not in st.session_state or st.sidebar.button("Limpar Histórico"):
-    st.session_state["messages"] = [{"role": "assistant", "content": "Como posso te ajudar?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "Como posso te ajudar com suas campanhas de marketing e análise de dados?"}]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
 if prompt := st.chat_input(placeholder="Me pergunte sobre campanhas de marketing"):
+    expert_prompt = f"""
+    [Em Português 🇧🇷]
+    Como especialista em marketing e análise de dados, preste atenção especial às métricas de Impressões, Cliques, CTR, CPA e Investimento. {prompt}
+    Forneça análises e insights considerando essas métricas chave e responda em português.
+    """
+    
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
 
-    # Criação do agente CSV com a chave da API fornecida
     agent = create_csv_agent(OpenAI(temperature=0, openai_api_key=openai_api_key), temp_path, verbose=True)
     
     with st.chat_message("assistant"):
-        response = agent.run(prompt)
+        response = agent.run(expert_prompt)
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.write(response)
 
-
 # Adicionando a visualização do CSV colapsável após a lógica de chat
 with st.expander("Ver dados do CSV", expanded=False):
-    df = pd.read_csv(temp_path)  # Usando o Pandas para ler o arquivo CSV temporário
-    st.dataframe(df)  # Exibindo os dados na tabela interativa do Streamlit
-
-
+    df = pd.read_csv(temp_path)
+    st.dataframe(df)
 
 # Adicionando uma frase no final da barra lateral com posição fixa
 st.sidebar.markdown("""
@@ -71,8 +73,8 @@ st.sidebar.markdown("""
         .sidebar .sidebar-content {
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Empurra o conteúdo para cima e para baixo */
-            height: calc(100vh - 96px); /* Altura da viewport menos o header do Streamlit */
+            justify-content: space-between;
+            height: calc(100vh - 96px);
         }
         .sidebar-footer {
             text-align: center;
@@ -85,7 +87,6 @@ st.sidebar.markdown("""
         Powered by On-Chain Labs
     </footer>
 """, unsafe_allow_html=True)
-
 
 # Rodapé com logo e texto
 st.markdown("""
@@ -103,7 +104,7 @@ st.markdown("""
     }
     .footer img {
         vertical-align: middle;
-        height: 30px;  # Ajuste a altura conforme necessário
+        height: 30px;
         margin: 5px;
     }
     .footer span {
