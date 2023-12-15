@@ -30,6 +30,9 @@ DEFAULT_CSV_PATH = "streamlit_agent/binder-data2.csv"
 uploaded_file_content = load_data(DEFAULT_CSV_PATH)
 temp_path = save_temporary_csv(uploaded_file_content)
 
+# Carrega o DataFrame
+df = pd.read_csv(temp_path)
+
 # Obtendo a chave da API do OpenAI da variável de ambiente
 openai_api_key = os.getenv('OPENAI_API_KEY')
 
@@ -46,10 +49,15 @@ for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
 if prompt := st.chat_input(placeholder="Me pergunte sobre campanhas de marketing"):
+    # Calculando estatísticas resumidas do dataframe
+    summary = df.describe().to_string()
+
+    # Construindo um prompt mais curto
     expert_prompt = f"""
     [Em Português 🇧🇷]
-    Como especialista em marketing e análise de dados, preste atenção especial às métricas de Impressões, Cliques, CTR, CPA e Investimento. {prompt}
-    Forneça análises e insights considerando essas métricas chave e responda em português.
+    Aqui está um resumo das métricas de marketing: 
+    {summary}
+    Com base nisso, {prompt}
     """
     
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -64,10 +72,9 @@ if prompt := st.chat_input(placeholder="Me pergunte sobre campanhas de marketing
 
 # Adicionando a visualização do CSV colapsável após a lógica de chat
 with st.expander("Ver dados do CSV", expanded=False):
-    df = pd.read_csv(temp_path)
     st.dataframe(df)
 
-# Adicionando uma frase no final da barra lateral com posição fixa
+# Estilização da barra lateral e rodapé
 st.sidebar.markdown("""
     <style>
         .sidebar .sidebar-content {
@@ -88,7 +95,6 @@ st.sidebar.markdown("""
     </footer>
 """, unsafe_allow_html=True)
 
-# Rodapé com logo e texto
 st.markdown("""
     <style>
     .reportview-container .main footer {visibility: hidden;}
@@ -116,4 +122,4 @@ st.markdown("""
         <img src='NEW-LOGO-2.png' alt='Logo On-Chain Labs'>
         <span>Powered by On-Chain Labs</span>
     </footer>
-    """, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
